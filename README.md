@@ -4,5 +4,5 @@ Created based on [100 days of Code-The complete python bootcamp](https://www.ude
 <br>**Requirements**<br> 
 1. Python3 
 2. Json library (built-in)
-3. Requests library (built-in)
+3. Requests library 
 4. Random library (built-in) 
