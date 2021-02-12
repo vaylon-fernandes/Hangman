@@ -3,8 +3,14 @@ from hangman_art import stages, logo
 import requests
 import json 
 
-data=requests.get('https://random-word-api.herokuapp.com/all/?swear=0').text
-words=json.loads(data)
+try:
+  # if internet is available
+  # GET from api
+  data=requests.get('https://random-word-api.herokuapp.com/all/?swear=0').text
+  words=json.loads(data)
+except:
+  # If no Internet use import words
+  from hangman_words import words
 
 #words= ['aardvak', 'baboon', 'camel']
 chosen_word=choice(words)
