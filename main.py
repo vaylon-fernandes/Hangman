@@ -4,16 +4,18 @@ import requests
 import json 
 from tqdm import tqdm
 
-for timeout in tqdm(range(0, 25, 5), desc='Checking internet connection'):
+for timeout in tqdm([10], desc='Checking internet connection'):
   try:
     # if internet is available
     # GET from api
-    #print('Checking internet connection.....')
     data=requests.get('https://random-word-api.herokuapp.com/all/?swear=0', timeout=timeout).text
     words=json.loads(data)
+    
   except:
-    # If no Internet use import words
+    # If no Internet use import words from hangman_words
     from hangman_words import words
+    print('\nNo connection. Loading preloaded words')
+    break
 
 #words= ['aardvak', 'baboon', 'camel']
 chosen_word=choice(words)
