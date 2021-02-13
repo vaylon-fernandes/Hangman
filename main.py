@@ -2,15 +2,20 @@ from random import choice
 from hangman_art import stages, logo
 import requests
 import json 
+from tqdm import tqdm
 
-try:
-  # if internet is available
-  # GET from api
-  data=requests.get('https://random-word-api.herokuapp.com/all/?swear=0').text
-  words=json.loads(data)
-except:
-  # If no Internet use import words
-  from hangman_words import words
+for timeout in tqdm([10], desc='Checking internet connection'):
+  try:
+    # if internet is available
+    # GET from api
+    data=requests.get('https://random-word-api.herokuapp.com/all/?swear=0', timeout=timeout).text
+    words=json.loads(data)
+    
+  except:
+    # If no Internet use import words from hangman_words
+    from hangman_words import words
+    print('\nNo connection. Loading preloaded words')
+    break
 
 #words= ['aardvak', 'baboon', 'camel']
 chosen_word=choice(words)
