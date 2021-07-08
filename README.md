@@ -26,5 +26,9 @@ Install dependencies
 ```bash
   pip Install -r requirements.txt
 ```
+Run `main .py`
+```bash 
+python main.py
+````
 ## Live Version 
 Check out a live Version on replit [here](https://repl.it/@vaylonfernandes/Hangman?embed=1&output=1#main.py)
